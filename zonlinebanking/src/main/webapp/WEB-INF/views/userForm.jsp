@@ -18,27 +18,27 @@
 		<a class="navbar-brand text-white"><h5>Online Banking Supreme</h5></a>
 		<div>
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/home">Home</a>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/branchForm">Branches</a>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/branchForm">Branches</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/userForm">Users</a>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/userForm">Users</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/customerForm">Customer
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/customerForm">Customer
 						Profile</a></li>
 				<sec:authorize access="hasAuthority('User')">
 					<li class="nav-item"><a class="nav-link"
-						href="/withdrawTransferDeposit">Transfer/Deposit</a></li>
+						href="${pageContext.request.contextPath}/withdrawTransferDeposit">Transfer/Deposit</a></li>
 				</sec:authorize>
 				<sec:authorize access="hasAuthority('Admin')">
-					<li class="nav-item"><a class="nav-link" href="/roleForm">Roles</a>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/roleForm">Roles</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="/accountForm">Accounts</a>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/accountForm">Accounts</a>
 					</li>
 				</sec:authorize>
-				<li class="nav-item"><a class="nav-link" href="/login">Login</a>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/logout">Logout</a>
+				<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
 				</li>
 			</ul>
 		</div>
@@ -110,9 +110,9 @@
 						<td><c:forEach items="${user.roles }" var="userRole">${userRole.name} </c:forEach>
 						</td>
 						<sec:authorize access="hasAuthority('Admin')">
-							<td><a href="/deleteUser?username=${user.username }">Delete</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteUser?username=${user.username }">Delete</a></td>
 						</sec:authorize>
-							<td><a href="/updateUser?username=${user.username }">Update</a></td>
+							<td><a href="${pageContext.request.contextPath}/updateUser?username=${user.username }">Update</a></td>
 					</tr>
 				</c:forEach>
 

@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@PropertySource(value = "classpath:db.properties")
+@PropertySource(value = "classpath:custom.properties")
 public class AppConfig {
 
 	@Autowired
@@ -86,8 +86,10 @@ public class AppConfig {
 		
 		
 	     
-	    mailSender.setUsername(System.getenv("SynfreeUsername"));
-	    mailSender.setPassword(System.getenv("SynfreePass"));
+	    mailSender.setUsername(environment.getProperty("SynfreeUsername"));
+	    mailSender.setPassword(environment.getProperty("SynfreePass"));
+	    
+	    
 	     
 	    Properties props = mailSender.getJavaMailProperties();
 	    props.put("mail.transport.protocol", "smtp");

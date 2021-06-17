@@ -81,7 +81,7 @@ public class UserController {
 			model.addAttribute("roles", roleService.getAllRoles());
 			return "userForm";
 		}
-
+		
 		userService.save(user);
 
 		model.addAttribute("users", userService.getAllUsers());

@@ -62,6 +62,7 @@ public class CustomerController {
 
 	@RequestMapping("/saveCustomer")
 	public String saveTheCustomer(Customer customer, Model model, BindingResult br) {
+		System.out.println(customer.getCustomerId());
 		
 		customerValidator.validate(customer, br);
 
@@ -89,6 +90,7 @@ public class CustomerController {
 		
 		if (customer.getCustomerId()!= null && customer.getCustomerId().equals(existingCustomer.getCustomerId())) {
 			customer.setUsername(existingCustomer.getUsername());
+			System.out.println(customer.getCustomerId());
 			customerService.save(customer);
 
 			model.addAttribute("customer", customer);

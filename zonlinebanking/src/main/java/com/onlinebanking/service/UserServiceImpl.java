@@ -20,7 +20,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User save(User user) {
+		
+		var potentialPreviousUser = userRepository.findById(user.getUserId());
+		if(potentialPreviousUser.isPresent() && potentialPreviousUser.get().getPassword().equals(user.getPassword())) {
+			return userRepository.save(user);
+		}
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		
 		return userRepository.save(user);
 	}
 
